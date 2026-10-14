@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="Jogo de plataforma 2D: use salto duplo, checkpoints, combos, turbo e relógios para vencer três fases antes do tempo acabar.">
+  <title>Corrida Contra o Tempo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">⏱</div>
+      <div class="brand-copy">
+        <p class="eyebrow">DESAFIO DE PLATAFORMA</p>
+        <h1>Corrida <span>Contra o Tempo</span></h1>
+      </div>
+      <div class="top-meta">
+        <div class="top-chip">3 FASES</div>
+        <div class="record-chip"><span>🏆 RECORDE</span><strong id="best-score">000000</strong></div>
+      </div>
+    </header>
+
+    <section class="game-panel" aria-label="Jogo Corrida Contra o Tempo">
+      <div class="panel-toolbar">
+        <p class="toolbar-label"><span class="live-dot"></span> SUA PRÓXIMA CORRIDA COMEÇA AQUI</p>
+        <div class="game-actions">
+          <button class="utility-button" id="audio-button" type="button" aria-pressed="true" title="Ativar ou desativar efeitos sonoros">🔊 Som: ligado</button>
+          <button class="utility-button" id="pause-button" type="button" disabled title="Pausar ou continuar (P ou Esc)">Ⅱ Pausar</button>
+        </div>
+      </div>
+
+      <div class="hud" id="hud" aria-live="polite">
+        <div class="hud-item"><span class="hud-icon">◷</span><div><small>TEMPO</small><strong id="time">00:38</strong></div></div>
+        <div class="hud-item"><span class="hud-icon coin-icon">●</span><div><small>PONTOS</small><strong id="score">000000</strong></div></div>
+        <div class="hud-item"><span class="hud-icon heart-icon">♥</span><div><small>VIDAS</small><strong id="lives">♥ ♥ ♥</strong></div></div>
+        <div class="hud-item stage"><span class="hud-icon">◆</span><div><small>FASE</small><strong id="stage">01 / 03</strong></div></div>
+      </div>
+
+      <div class="canvas-wrap">
+        <canvas id="game" width="960" height="540" aria-label="Área do jogo. Use as setas ou A e D para correr e Espaço para pular."></canvas>
+        <div class="overlay" id="overlay">
+          <div class="overlay-card">
+            <div class="overlay-symbol" id="overlay-symbol">🏁</div>
+            <p class="eyebrow" id="overlay-kicker">PRONTO PARA O DESAFIO?</p>
+            <h2 id="overlay-title">Chegue antes do tempo acabar!</h2>
+            <p class="overlay-copy" id="overlay-copy">Corra, pule os obstáculos e pegue moedas. Complete as três fases para vencer.</p>
+            <label class="difficulty-picker" id="difficulty-picker" for="difficulty-select">
+              <span>ESCOLHA A DIFICULDADE</span>
+              <select id="difficulty-select">
+                <option value="easy">Tranquilo · mais tempo e 4 vidas</option>
+                <option value="normal" selected>Normal · desafio equilibrado</option>
+                <option value="hard">Insano · menos tempo e 2 vidas</option>
+              </select>
+            </label>
+            <button class="primary-button" id="main-button" type="button">Começar corrida <span aria-hidden="true">→</span></button>
+            <p class="key-hint">Mover: <kbd>A</kbd> <kbd>D</kbd> ou <kbd>←</kbd> <kbd>→</kbd> · Pular duas vezes: <kbd>ESPAÇO</kbd> · Investida: <kbd>SHIFT</kbd> · Pausar: <kbd>P</kbd></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <div class="stage-note"><span class="live-dot"></span><span id="stage-name">Fase 1 — Campo ensolarado</span></div>
+        <div class="legend"><span><i class="legend-coin"></i> Moeda +100</span><span><i class="legend-boost">ϟ</i> Turbo</span><span><i class="legend-shield">◇</i> Escudo</span><span><i class="legend-clock">◷</i> Tempo +6s</span><span><i class="legend-spike">▲</i> Perigo</span></div>
+      </div>
+    </section>
+
+    <section class="bottom-row">
+      <div class="tip-card"><span class="tip-icon">💡</span><div><strong>Dica rápida</strong><p>Você pode pular duas vezes no ar. Colete relógios para ganhar 6 segundos, ative bandeiras de checkpoint e use Shift para uma arrancada rápida.</p></div></div>
+      <div class="mobile-controls" aria-label="Controles de toque">
+        <button class="touch-button" data-key="ArrowLeft" type="button" aria-label="Mover para a esquerda">←</button>
+        <button class="touch-button" data-key="ArrowRight" type="button" aria-label="Mover para a direita">→</button>
+        <button class="touch-button jump-button" data-key="Space" type="button" aria-label="Pular ou dar salto duplo">PULO ×2 ↑</button>
+        <button class="touch-button dash-button" data-key="Shift" type="button" aria-label="Investida rápida">DASH ϟ</button>
+      </div>
+    </section>
+    <footer>Feito com HTML, CSS e JavaScript · Colete itens, vença as fases e supere seu recorde pessoal.</footer>
+  </main>
+  <script src="js/game.js"></script>
+</body>
+</html>
